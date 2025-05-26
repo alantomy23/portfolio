@@ -141,38 +141,55 @@
 
     /* Mobile responsive: switch to horizontal scroll without rotation */
     @media (max-width: 768px) {
-      .external {
-        height: auto;
-      }
+  .external {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 
-      .horizontal-scroll-wrapper {
-        width: 100vw;
-        height: 300px;
-        transform: none;
-        overflow-x: auto;
-        overflow-y: hidden;
-        display: flex;
-        flex-direction: row;
-        padding-bottom: 1rem;
-      }
+  .horizontal-scroll-wrapper {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 1rem;
+  }
 
-      .img-wrapper {
-        transform: none !important;
-        min-height: auto;
-        margin-right: 1rem;
-        flex-shrink: 0;
-      }
+  .img-wrapper {
+    flex: 0 0 auto;
+    transform: none !important;
+    margin: 0;
+    scroll-snap-align: center;
+  }
 
-      img {
-        max-width: 200px;
-        max-height: none;
-        filter: saturate(40%) sepia(30%) hue-rotate(5deg);
-      }
+  .img-wrapper a {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
 
-      .img-wrapper:hover {
-        min-height: auto;
-      }
-    }
+  img {
+    width: 90vw;
+    height: auto;
+    border-radius: 10px;
+    filter: none;
+    transition: transform 0.3s ease;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+  }
+
+  .img-wrapper:hover {
+    min-height: auto;
+  }
+}
   </style>
 </head>
 <body>
