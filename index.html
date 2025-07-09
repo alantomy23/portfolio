@@ -85,22 +85,90 @@
             <section id="intro" class="s-intro target-section">
 
                 <div class="row intro-content wide">
-                    
+  <div class="column">
+    <div class="text-pretitle with-line" id="animated-intro"></div>
 
-                    <div class="column">
-                        <div class="text-pretitle with-line">
-                            Hello World
-                        </div>
-                        
+    <h1 class="text-huge-title">
+      I am Alan, <br>
+      <span class="typing" id="typing-text"></span><br>
+    </h1>
+  </div>
+</div>
 
-                        <h1 class="text-huge-title">
-                            I am Alan, <br>
-                            a frontend <br> 
-                            developer<br>
-                            & photographer <br>
-                            
-                        </h1>
-                    </div>
+<style>
+.typing {
+  font-weight: bold;
+  color: #d6b58d;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+#animated-intro {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const introText = "Crafting clean designs & creative code";
+  const roles = ["Frontend Developer", "WordPress Developer", "Photographer"];
+  let introIndex = 0;
+  let roleIndex = 0;
+  let charIndex = 0;
+  const typingSpeed = 100;
+  const erasingSpeed = 50;
+  const delayBetweenWords = 1500;
+
+  const introElement = document.getElementById("animated-intro");
+  const typingElement = document.getElementById("typing-text");
+
+  function typeIntro() {
+    if (introIndex < introText.length) {
+      introElement.textContent += introText.charAt(introIndex++);
+      setTimeout(typeIntro, 60);
+    } else {
+      setTimeout(typeRole, 500);
+    }
+  }
+
+  function typeRole() {
+    if (charIndex < roles[roleIndex].length) {
+      typingElement.textContent += roles[roleIndex].charAt(charIndex++);
+      setTimeout(typeRole, typingSpeed);
+    } else {
+      setTimeout(eraseRole, delayBetweenWords);
+    }
+  }
+
+  function eraseRole() {
+    if (charIndex > 0) {
+      typingElement.textContent = roles[roleIndex].substring(0, --charIndex);
+      setTimeout(eraseRole, erasingSpeed);
+    } else {
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(typeRole, 500);
+    }
+  }
+
+  typeIntro();
+});
+</script>
+
 
                     <ul class="intro-social">
                         <li><a href="https://www.linkedin.com/in/alan-tomy-626a93240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">linkedin</a></li>
